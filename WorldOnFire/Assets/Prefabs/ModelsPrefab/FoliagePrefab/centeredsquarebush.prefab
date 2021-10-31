@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5871997064041401590
+--- !u!1 &2308829282653425398
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5871997064041401586}
-  - component: {fileID: 5871997064041401587}
-  - component: {fileID: 5871997064041401588}
-  - component: {fileID: 5871997064041401589}
-  - component: {fileID: 3098850656771894628}
+  - component: {fileID: 3116855238802510924}
+  - component: {fileID: 2084762858321386473}
+  - component: {fileID: 4254326665124802339}
+  - component: {fileID: 6172357318958519253}
+  - component: {fileID: 3363646671367998719}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: centeredsquarebush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5871997064041401586
+--- !u!4 &3116855238802510924
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5871997064041401590}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.029081345, y: -0.08277321, z: 0.029081345}
-  m_LocalScale: {x: 10, y: 5, z: 10}
+  m_GameObject: {fileID: 2308829282653425398}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5871997064041401587
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!33 &2084762858321386473
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5871997064041401590}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5871997064041401588
+  m_GameObject: {fileID: 2308829282653425398}
+  m_Mesh: {fileID: 1334158595359558311, guid: 199518f7b4888254d8e64b1603fe2e6b, type: 3}
+--- !u!23 &4254326665124802339
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5871997064041401590}
+  m_GameObject: {fileID: 2308829282653425398}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,7 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d02e49b407ba018409ffceeba55d285d, type: 2}
+  - {fileID: -7860024771719708174, guid: 199518f7b4888254d8e64b1603fe2e6b, type: 3}
+  - {fileID: -1012838555728960699, guid: 199518f7b4888254d8e64b1603fe2e6b, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,32 +84,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5871997064041401589
+--- !u!64 &6172357318958519253
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5871997064041401590}
+  m_GameObject: {fileID: 2308829282653425398}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &3098850656771894628
-MonoBehaviour:
+  m_Mesh: {fileID: 1334158595359558311, guid: 199518f7b4888254d8e64b1603fe2e6b, type: 3}
+--- !u!65 &3363646671367998719
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5871997064041401590}
+  m_GameObject: {fileID: 2308829282653425398}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcad380e38b594443ba07556ca18136c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numOfHouses: 50
-  houses: {fileID: 8729709782383293361, guid: d8f7f06b79325a74e89a728457fe5ee8, type: 3}
-  plane: {fileID: 5871997064041401586}
+  serializedVersion: 2
+  m_Size: {x: 0.013050027, y: 0.037302107, z: 0.015971912}
+  m_Center: {x: -0.000082819024, y: -0.00012362466, z: 0.008005592}
