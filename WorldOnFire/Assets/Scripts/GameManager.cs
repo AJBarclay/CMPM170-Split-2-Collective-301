@@ -142,12 +142,9 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            //changing
+            placedObject.transform.GetChild(2).GetComponent<Renderer>().material.color = houseColors[Random.Range(0, houseColors.Length)];
             
-            //changing the component details of the child mesh of the object
-            for (var x = 0; x < placedObject.transform.childCount; x++)
-            {
-                placedObject.transform.GetChild(x).GetComponent<Renderer>().material.color = houseColors[Random.Range(0, houseColors.Length)];
-            }
             //Adding to the collection of spawned objects
             _spawnedObjects.Add(placedObject);
             
