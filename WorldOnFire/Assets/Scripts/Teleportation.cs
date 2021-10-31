@@ -14,6 +14,7 @@ public class Teleportation : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag("Player"))
         {
             Teleport(other.transform);
