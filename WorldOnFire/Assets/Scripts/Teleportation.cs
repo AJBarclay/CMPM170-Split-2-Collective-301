@@ -14,7 +14,7 @@ public class Teleportation : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-
+        
         if (other.CompareTag("Player"))
         {
             Teleport(other.transform);
@@ -23,16 +23,20 @@ public class Teleportation : MonoBehaviour
 
     private void Teleport(Transform toBeTeleported)
     {
+        CharacterController cc = toBeTeleported.GetComponent<CharacterController>();
+        cc.enabled = false;
         Vector3 posToTeleport = toBeTeleported.position;
         if (teleportationAxis == ColliderEnum.XAxis)
         {
             if (toBeTeleported.position.x <= 0)
             {
                 toBeTeleported.SetPositionAndRotation(new Vector3(posToTeleport.x + amountToTeleport, posToTeleport.y,posToTeleport.z), Quaternion.identity);
+                Debug.Log("player teleported");
             } 
             else if (toBeTeleported.position.x >= 0)
             {
                 toBeTeleported.SetPositionAndRotation(new Vector3(posToTeleport.x - amountToTeleport, posToTeleport.y,posToTeleport.z), Quaternion.identity);
+                Debug.Log("player teleported");
             }
         }
         else if (teleportationAxis == ColliderEnum.ZAxis)
@@ -40,11 +44,14 @@ public class Teleportation : MonoBehaviour
             if (toBeTeleported.position.z <= 0)
             {
                 toBeTeleported.SetPositionAndRotation(new Vector3(posToTeleport.x, posToTeleport.y,posToTeleport.z + amountToTeleport), Quaternion.identity);
+                Debug.Log("player teleported");
             } 
             else if (toBeTeleported.position.z >= 0)
             {
                 toBeTeleported.SetPositionAndRotation(new Vector3(posToTeleport.x, posToTeleport.y,posToTeleport.z - amountToTeleport), Quaternion.identity);
+                Debug.Log("player teleported");
             }
         }
+        cc.enabled = true;
     }
 }
