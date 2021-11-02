@@ -157,15 +157,26 @@ MonoBehaviour:
   spawnedObjectsOffset: 12
   teleportBoundary: {fileID: 3539908739229813953, guid: 8fda851fc6421439cb5cda9735d12c0e, type: 3}
   amountToTeleport: 0
-  refillStation: {fileID: 4409553919650514568, guid: 6ddd0e91549a34869a9d294ef8484272, type: 3}
+  refillStation: {fileID: 2690741790345615283, guid: 6ddd0e91549a34869a9d294ef8484272, type: 3}
   refillstationDensity: 3
   foliages:
-  - {fileID: 7981805127531060955, guid: 54cb21c0a60b44138836592d7984234c, type: 3}
-  - {fileID: 7640620454752862229, guid: 8bdbb8eeccd234ff8b5fd410a6ac93b5, type: 3}
-  - {fileID: 5277842868814995529, guid: 85f0533320bef443aaa2fabbd39791aa, type: 3}
-  - {fileID: 2308829282653425398, guid: cb1c2d17cd444428486f9e6ff2067749, type: 3}
-  - {fileID: 1724769310359553835, guid: e096cbe3f16724567b8989ce7d44cf23, type: 3}
-  foliageDensity: 20
+  - {fileID: 7728569183717628912, guid: 54cb21c0a60b44138836592d7984234c, type: 3}
+  - {fileID: 3084978651945781592, guid: 8bdbb8eeccd234ff8b5fd410a6ac93b5, type: 3}
+  - {fileID: 2391746662997406199, guid: 85f0533320bef443aaa2fabbd39791aa, type: 3}
+  - {fileID: 7075008229938383498, guid: cb1c2d17cd444428486f9e6ff2067749, type: 3}
+  - {fileID: 5098097695926582009, guid: e096cbe3f16724567b8989ce7d44cf23, type: 3}
+  - {fileID: 1284433190086947955, guid: 2c4cdf755413d4b2992d80afcc203b9b, type: 3}
+  - {fileID: 2991463049019513306, guid: 6fb6331f6679a4199b01bad5e75573ee, type: 3}
+  - {fileID: 93164408689876431, guid: 0a2866cadedc34cb99ccacb2276d900a, type: 3}
+  - {fileID: 7470867763987268298, guid: 96f6e7385a24f472bb3c0621962f9fad, type: 3}
+  - {fileID: 1651538537370681411, guid: 7a052a612f8c64801bf6c38250b21df6, type: 3}
+  - {fileID: 1515133805485003539, guid: 1e8a6ab05a6124e6a99db8cf27a996d9, type: 3}
+  - {fileID: 2749714457254758671, guid: a5f0cfbace8bb4844b6bfcfd8dabfbe0, type: 3}
+  - {fileID: 503168369802113024, guid: 88e761c496a1e4b82b8491ef5218d554, type: 3}
+  - {fileID: 8400884644335411762, guid: e62c146b500594630a3b3feb972ef809, type: 3}
+  - {fileID: 8783227694846430200, guid: d8b19c11eba1f40f2b4fcc533f4e7222, type: 3}
+  - {fileID: 3621588212885773971, guid: c272ab3e234ec43e0bf124b963b7c278, type: 3}
+  foliageDensity: 10
   houses:
   - {fileID: 5871584229480026539, guid: d322cf969141641c39bfdf26a02bf650, type: 3}
   houseDensity: 8
@@ -292,6 +303,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2613280775418166315, guid: 877ae7bf7b4ef4a4ab7201a36112eb8f, type: 3}
+      propertyPath: upLimit
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2613280775418166315, guid: 877ae7bf7b4ef4a4ab7201a36112eb8f, type: 3}
+      propertyPath: downLimit
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2613280775418166315, guid: 877ae7bf7b4ef4a4ab7201a36112eb8f, type: 3}
       propertyPath: cameraHolder
       value: 
