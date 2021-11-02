@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,8 +23,24 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
+    void Start()
+    {
+        gameObject.GetComponent<CharacterController>().detectCollisions = true;
+    }
+
     // Update is called once per frame
     void Update()
+    {
+        if (gameObject.GetComponent<CharacterController>().velocity.x > 0 ||gameObject.GetComponent<CharacterController>().velocity.z > 0)
+        {
+            gameObject.GetComponent<Animator>().SetBool("isWalking", true);
+        } else if (gameObject.GetComponent<CharacterController>().velocity.x == 0 || gameObject.GetComponent<CharacterController>().velocity.z == 0)
+        {
+            gameObject.GetComponent<Animator>().SetBool("isWalking", false);
+        }
+    }
+
+    private void FixedUpdate()
     {
         Move();
         Rotate();
