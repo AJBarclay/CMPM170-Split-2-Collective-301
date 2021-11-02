@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _instance;
+    public static GameManager Instance { get { return _instance; } }
+
     [Header("Game Plane Settings")]
     [Tooltip("Size of the game plane")]
     public float planeSize;
@@ -19,6 +22,8 @@ public class GameManager : MonoBehaviour
     [Space(25)]
     [Tooltip("Teleport Boundary Prefab")]
     public GameObject teleportBoundary;
+    [Tooltip("Teleportation amount calculated from the plane size at awake")]
+    public float amountToTeleport;
 
     [Space(5)]
     [Header("Refill Station Settings")]
@@ -53,12 +58,24 @@ public class GameManager : MonoBehaviour
     private GameObject _gamePlane;
     private List<GameObject> _spawnedObjects = new List<GameObject>();
     private float _planeSizeToPositionMod;
+    
+    
 
-
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
     void Start()
     {
         _planeSizeToPositionMod = ((planeSize*10)/2);
+        amountToTeleport = (planeSize * 10) - ((planeSize / 20) * 10);
         GenerateLevel();
         GenerateTeleport();
     }
