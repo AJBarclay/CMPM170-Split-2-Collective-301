@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - House
+  - Refill
   layers:
   - Default
   - TransparentFX

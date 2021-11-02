@@ -157,8 +157,8 @@ MonoBehaviour:
   spawnedObjectsOffset: 12
   teleportBoundary: {fileID: 3539908739229813953, guid: 8fda851fc6421439cb5cda9735d12c0e, type: 3}
   amountToTeleport: 0
-  refillStation: {fileID: 0}
-  refillstationDensity: 0
+  refillStation: {fileID: 4409553919650514568, guid: 6ddd0e91549a34869a9d294ef8484272, type: 3}
+  refillstationDensity: 3
   foliages:
   - {fileID: 7981805127531060955, guid: 54cb21c0a60b44138836592d7984234c, type: 3}
   - {fileID: 7640620454752862229, guid: 8bdbb8eeccd234ff8b5fd410a6ac93b5, type: 3}
@@ -296,6 +296,10 @@ PrefabInstance:
       propertyPath: cameraHolder
       value: 
       objectReference: {fileID: 1702253511}
+    - target: {fileID: 2613280775418166315, guid: 877ae7bf7b4ef4a4ab7201a36112eb8f, type: 3}
+      propertyPath: mouseSensitivity
+      value: 6.05
+      objectReference: {fileID: 0}
     - target: {fileID: 6070588679658693677, guid: 877ae7bf7b4ef4a4ab7201a36112eb8f, type: 3}
       propertyPath: m_RootOrder
       value: 1
