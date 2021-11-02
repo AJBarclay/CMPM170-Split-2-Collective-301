@@ -136,6 +136,10 @@ public class GameManager : MonoBehaviour
         {
             PlaceObject(houses[Random.Range(0,houses.Length)]);
         }
+        for (var x = 0; x < refillstationDensity; x++) 
+        {
+            PlaceObject(refillStation);
+        }
     }
 
     private void PlaceObject(GameObject toBePlaced)
@@ -165,6 +169,22 @@ public class GameManager : MonoBehaviour
             //Adding to the collection of spawned objects
             _spawnedObjects.Add(placedObject);
             
+        } else if(toBePlaced.CompareTag("Refill"))
+        {
+            var placedObject = Instantiate(toBePlaced, new Vector3(Random.Range(0-_planeSizeToPositionMod + spawnedObjectsOffset,0 + _planeSizeToPositionMod - spawnedObjectsOffset), 2.8f, Random.Range(0 - _planeSizeToPositionMod + spawnedObjectsOffset, 0 + _planeSizeToPositionMod - spawnedObjectsOffset)), Quaternion.identity);
+            if (_spawnedObjects.Count > 1)
+            {
+                for (var x = 0; x < _spawnedObjects.Count; x++)
+                {
+                    if (placedObject.GetComponent<BoxCollider>().bounds
+                        .Intersects(_spawnedObjects[x].GetComponent<BoxCollider>().bounds))
+                    {
+                        Destroy(placedObject);
+                        PlaceObject(toBePlaced);
+                    }
+                }
+            }
+            _spawnedObjects.Add(placedObject);
         } else 
         {
             var placedObject = Instantiate(toBePlaced, new Vector3(Random.Range(0-_planeSizeToPositionMod + spawnedObjectsOffset,0 + _planeSizeToPositionMod - spawnedObjectsOffset), 0, Random.Range(0 - _planeSizeToPositionMod + spawnedObjectsOffset, 0 + _planeSizeToPositionMod - spawnedObjectsOffset)), Quaternion.identity);
