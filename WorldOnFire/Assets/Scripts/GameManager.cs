@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
     {
         _planeSizeToPositionMod = ((planeSize*10)/2);
         amountToTeleport = (planeSize * 10) - ((planeSize / 20) * 10);
+        
         GenerateLevel();
         GenerateTeleport();
     }
