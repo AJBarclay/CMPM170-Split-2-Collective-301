@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireSpreading : MonoBehaviour
 {
-	public GameObject GameManager;
+	//public GameObject GameManager;
 	public GameObject fire;
 	public GameManager gameManagerScript;
 	public float timer = 5.0f;
@@ -17,10 +17,11 @@ public class FireSpreading : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		GameManager  = GameObject.Find("GameManager");
+		//GameManager  = GameObject.Find("GameManager");
 		fire = GameObject.Find("Fire");
 		//fire = gameObject;
-		gameManagerScript = GameManager.GetComponent<GameManager>();
+		//gameManagerScript = GameManager.GetComponent<GameManager>();
+		gameManagerScript = GameManager.Instance;
         
     }
 
@@ -28,6 +29,7 @@ public class FireSpreading : MonoBehaviour
     void Update()
     {
         
+		state = gameManagerScript.stateGrid[x,y];
 		if(timer > 0 && state > 0)
 		{
 			timer -= Time.deltaTime;
@@ -35,12 +37,12 @@ public class FireSpreading : MonoBehaviour
 		else if (timer <= 0 && state > 0)
 		{
 			state++;
-			gameManagerScript.stateGrid[x,y]++;
+			gameManagerScript.stateGrid[x,y] += 1;
 			if (state > 4) { state = 4;}
 			if(gameManagerScript.stateGrid[x,y] > 4) { gameManagerScript.stateGrid[x,y] = 4;}
 			timer = 5.0f;
 		}
-		state = gameManagerScript.stateGrid[x,y];
+		gameManagerScript.stateGrid[x,y] = state;
 		switch(state)
 		{
 			case(4):
@@ -50,6 +52,7 @@ public class FireSpreading : MonoBehaviour
 				SpreadFire();
 			}	
 			state -= 2;
+			gameManagerScript.stateGrid[x,y] -= 2;
 			break;
 			case(3):
 			gameObject.SetActive(true);
@@ -65,16 +68,16 @@ public class FireSpreading : MonoBehaviour
 			if(putout == true)
 			{
 				gameManagerScript.fireCount++;
-				putout = false;
 			}
+			putout = false;
 			break;
 			case(0):
 			transform.localScale = new Vector3(0.0f,0.0f,0.0f);
 			if(	putout == false)
 			{
 				gameManagerScript.fireCount--;
-				putout = true;
 			}
+			putout = true;
 			//gameObject.SetActive(false);
 			break;
 			default:
@@ -89,8 +92,8 @@ public class FireSpreading : MonoBehaviour
 	{	
 		//fire = GameObject.Find("Fire");
 		fire = gameObject;
-		GameManager  = GameObject.Find("GameManager");
-		gameManagerScript = GameManager.GetComponent<GameManager>();
+		//GameManager  = GameObject.Find("GameManager");
+		//gameManagerScript = GameManager.GetComponent<GameManager>();
         
 		int direction = Random.Range(1,4);
 		Debug.Log(direction);
@@ -142,6 +145,6 @@ public class FireSpreading : MonoBehaviour
 		newFire.SetActive(true);
 		FireSpreading newFireScript = newFire.GetComponent<FireSpreading>();
 		newFireScript.state += 1;
-		gameManagerScript.stateGrid[(int)nextPos.x,(int)nextPos.y]++;
+		gameManagerScript.stateGrid[(int)nextPos.x,(int)nextPos.y] += 1;
 	}
 }
