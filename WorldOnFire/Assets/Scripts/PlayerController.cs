@@ -50,9 +50,16 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.forward * verticalMove + transform.right * horizontalMove;
-        characterController.Move(speed * Time.deltaTime * move);
+        if (characterController.isGrounded)
+        {
+            Vector3 move = transform.forward * verticalMove + transform.right * horizontalMove;
+            characterController.Move(speed * Time.deltaTime * move);
+        }
+        else
+        {
+            Vector3 move = transform.forward * verticalMove + transform.right * horizontalMove + Vector3.down;
+            characterController.Move(speed * Time.deltaTime * move);
+        }
     }
     public void Rotate()
     {
