@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 public class Teleportation : MonoBehaviour
 {
    
@@ -19,12 +21,21 @@ public class Teleportation : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            Teleport(other.transform);
+
+            StartCoroutine(Teleport(other.transform));
         }
     }
 
-    private void Teleport(Transform toBeTeleported)
+    IEnumerator Teleport(Transform toBeTeleported)
     {
+        //Debug.Log("active");
+        GameObject ui = GameObject.Find("UI Camera");
+        var eff = ui.GetComponent<Transform>().GetChild(0);
+        eff.gameObject.SetActive(!eff.gameObject.activeSelf);
+
+        yield return new WaitForSeconds(1);
+
+
         CharacterController cc = toBeTeleported.GetComponent<CharacterController>();
         cc.enabled = false;
         Vector3 posToTeleport = toBeTeleported.position;
@@ -55,5 +66,7 @@ public class Teleportation : MonoBehaviour
             }
         }
         cc.enabled = true;
+        yield return new WaitForSeconds(1);
+        eff.gameObject.SetActive(!eff.gameObject.activeSelf);
     }
 }
