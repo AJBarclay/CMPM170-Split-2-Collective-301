@@ -53,10 +53,27 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     [Tooltip("Colors to be used for different house parts")]
     public Color[] houseColors;
-    
+	
+	[Space(5)]
+	[Header("Fire Settings")]
+	[Space(25)]
+	[Tooltip("Fire Prefab")]
+	public GameObject fire;
+	[Space(10)]
+	[Tooltip("Number of Fires in the scene at start")]
+	public int startFireDensity;
+	[Space(10)]
+	[Tooltip("Number of Fires in the scene")]
+	public int fireDensity;
+	[Space(10)]
+	[Tooltip("Number of Fires active")]
+	public int fireCount = 0;
+	[Space(10)]
+	[Tooltip("Grid Divisions (per side)")]
+	public int gridDivisions;
     
     private GameObject _gamePlane;
-    private List<GameObject> _spawnedObjects = new List<GameObject>();
+    public List<GameObject> _spawnedObjects = new List<GameObject>();
     private float _planeSizeToPositionMod;
     
     
@@ -140,6 +157,11 @@ public class GameManager : MonoBehaviour
         {
             PlaceObject(refillStation);
         }
+		for (var x = 0; x < startFireDensity; x++)
+		{
+			fireCount++;
+			PlaceObject(fire);
+		}
     }
 
     private void PlaceObject(GameObject toBePlaced)
@@ -185,7 +207,23 @@ public class GameManager : MonoBehaviour
                 }
             }
             _spawnedObjects.Add(placedObject);
-        } else 
+        } else if(toBePlaced.CompareTag("Fire"))
+		{
+			var placedObject = Instantiate(toBePlaced, new Vector3(Random.Range(0-_planeSizeToPositionMod + spawnedObjectsOffset,0 + _planeSizeToPositionMod - spawnedObjectsOffset), 0, Random.Range(0 - _planeSizeToPositionMod + spawnedObjectsOffset, 0 + _planeSizeToPositionMod - spawnedObjectsOffset)), Quaternion.identity);
+            if (_spawnedObjects.Count > 1)
+            {
+                for (var x = 0; x < _spawnedObjects.Count; x++)
+                {
+                    if (placedObject.GetComponent<BoxCollider>().bounds
+                        .Intersects(_spawnedObjects[x].GetComponent<BoxCollider>().bounds))
+                    {
+                        Destroy(placedObject);
+                        PlaceObject(toBePlaced);
+                    }
+                }
+            }
+            _spawnedObjects.Add(placedObject);
+		}else 
         {
             var placedObject = Instantiate(toBePlaced, new Vector3(Random.Range(0-_planeSizeToPositionMod + spawnedObjectsOffset,0 + _planeSizeToPositionMod - spawnedObjectsOffset), 0, Random.Range(0 - _planeSizeToPositionMod + spawnedObjectsOffset, 0 + _planeSizeToPositionMod - spawnedObjectsOffset)), Quaternion.identity);
             if (_spawnedObjects.Count > 1)

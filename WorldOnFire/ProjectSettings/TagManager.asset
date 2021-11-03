@@ -6,6 +6,7 @@ TagManager:
   tags:
   - House
   - Refill
+  - Fire
   layers:
   - Default
   - TransparentFX
