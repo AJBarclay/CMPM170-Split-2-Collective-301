@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class houseCatchingFire : MonoBehaviour
 {
-    public float houseTimer;
+    public float houseTimer = 10;
     public bool houseIsOnFire = false;
     // public gameObject fire;
     // Start is called before the first frame update
