@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1174333238474642647}
   m_Layer: 0
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4823,6 +4823,9 @@ MonoBehaviour:
   gameManagerScript: {fileID: 0}
   timer: 0
   state: 0
+  x: 0
+  y: 0
+  putout: 0
 --- !u!65 &1174333238474642647
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
 	[Space(10)]
 	[Tooltip("Grid Divisions (per side)")]
 	public int gridDivisions;
+	public int[,] stateGrid;
+	public GameObject[,] fireGrid;
     
     private GameObject _gamePlane;
     public List<GameObject> _spawnedObjects = new List<GameObject>();
@@ -93,6 +95,7 @@ public class GameManager : MonoBehaviour
     {
         _planeSizeToPositionMod = ((planeSize*10)/2);
         amountToTeleport = (planeSize * 10) - ((planeSize / 20) * 10);
+		GenerateGrid();
         GenerateLevel();
         GenerateTeleport();
     }
@@ -209,7 +212,16 @@ public class GameManager : MonoBehaviour
             _spawnedObjects.Add(placedObject);
         } else if(toBePlaced.CompareTag("Fire"))
 		{
-			var placedObject = Instantiate(toBePlaced, new Vector3(Random.Range(0-_planeSizeToPositionMod + spawnedObjectsOffset,0 + _planeSizeToPositionMod - spawnedObjectsOffset), 0, Random.Range(0 - _planeSizeToPositionMod + spawnedObjectsOffset, 0 + _planeSizeToPositionMod - spawnedObjectsOffset)), Quaternion.identity);
+			var xpos = Random.Range(0,gridDivisions - 1);
+			var ypos = Random.Range(0,gridDivisions - 1);
+			while(stateGrid[xpos,ypos] != 0)
+			{
+				xpos = Random.Range(0,gridDivisions - 1);
+				ypos = Random.Range(0,gridDivisions - 1);
+			}
+			Debug.Log(xpos);
+			Debug.Log(ypos);
+			/*var placedObject = Instantiate(toBePlaced, new Vector3(Random.Range(0-_planeSizeToPositionMod + spawnedObjectsOffset,0 + _planeSizeToPositionMod - spawnedObjectsOffset), 0, Random.Range(0 - _planeSizeToPositionMod + spawnedObjectsOffset, 0 + _planeSizeToPositionMod - spawnedObjectsOffset)), Quaternion.identity);
             if (_spawnedObjects.Count > 1)
             {
                 for (var x = 0; x < _spawnedObjects.Count; x++)
@@ -221,8 +233,13 @@ public class GameManager : MonoBehaviour
                         PlaceObject(toBePlaced);
                     }
                 }
-            }
-            _spawnedObjects.Add(placedObject);
+            }*/
+			var currentFire = fireGrid[xpos,ypos];
+			FireSpreading fireScript = currentFire.GetComponent<FireSpreading>();
+			fireScript.state = 1;
+			currentFire.SetActive(true);
+			stateGrid[xpos,ypos] = 1;
+            //_spawnedObjects.Add(placedObject);
 		}else 
         {
             var placedObject = Instantiate(toBePlaced, new Vector3(Random.Range(0-_planeSizeToPositionMod + spawnedObjectsOffset,0 + _planeSizeToPositionMod - spawnedObjectsOffset), 0, Random.Range(0 - _planeSizeToPositionMod + spawnedObjectsOffset, 0 + _planeSizeToPositionMod - spawnedObjectsOffset)), Quaternion.identity);
@@ -242,4 +259,30 @@ public class GameManager : MonoBehaviour
         }
         
     }
+	
+	private void GenerateGrid()
+	{
+		stateGrid = new int[gridDivisions,gridDivisions];
+		fireGrid = new GameObject[gridDivisions,gridDivisions];
+		for (var x = 0; x < gridDivisions; x++)
+		{
+			for (var y = 0; y < gridDivisions; y++)
+			{
+				stateGrid[x,y] = 0;
+				var newFire = Instantiate(fire,
+				new Vector3(((planeSize*10)/gridDivisions)*(x - (gridDivisions/2)), 0, ((planeSize*10)/gridDivisions)*(y - (gridDivisions/2)))
+				,Quaternion.identity);
+				FireSpreading newFireScript = newFire.GetComponent<FireSpreading>();
+				newFireScript.state = 0;
+				newFireScript.x = x;
+				newFireScript.y = y;	
+				fireGrid[x,y] = newFire;
+			}
+		}
+	}
+
+
+	
 }
+
+	
