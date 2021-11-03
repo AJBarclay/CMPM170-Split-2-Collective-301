@@ -32,12 +32,12 @@ public class Teleportation : MonoBehaviour
         {
             if (toBeTeleported.position.x <= 0)
             {
-                toBeTeleported.SetPositionAndRotation(new Vector3(posToTeleport.x + GameManager.Instance.amountToTeleport, posToTeleport.y,posToTeleport.z), Quaternion.identity);
+                toBeTeleported.SetPositionAndRotation(new Vector3(posToTeleport.x + GameManager.Instance.amountToTeleport, posToTeleport.y,posToTeleport.z), cc.transform.localRotation);
                 Debug.Log("player teleported");
             } 
             else if (toBeTeleported.position.x >= 0)
             {
-                toBeTeleported.SetPositionAndRotation(new Vector3(posToTeleport.x - GameManager.Instance.amountToTeleport, posToTeleport.y,posToTeleport.z), Quaternion.identity);
+                toBeTeleported.SetPositionAndRotation(new Vector3(posToTeleport.x - GameManager.Instance.amountToTeleport, posToTeleport.y,posToTeleport.z), cc.transform.localRotation);
                 Debug.Log("player teleported");
             }
         }
@@ -45,12 +45,12 @@ public class Teleportation : MonoBehaviour
         {
             if (toBeTeleported.position.z <= 0)
             {
-                toBeTeleported.SetPositionAndRotation(new Vector3(posToTeleport.x, posToTeleport.y,posToTeleport.z + GameManager.Instance.amountToTeleport), Quaternion.identity);
+                toBeTeleported.SetPositionAndRotation(new Vector3(posToTeleport.x, posToTeleport.y,posToTeleport.z + GameManager.Instance.amountToTeleport), cc.transform.localRotation);
                 Debug.Log("player teleported");
             } 
             else if (toBeTeleported.position.z >= 0)
             {
-                toBeTeleported.SetPositionAndRotation(new Vector3(posToTeleport.x, posToTeleport.y,posToTeleport.z - GameManager.Instance.amountToTeleport), Quaternion.identity);
+                toBeTeleported.SetPositionAndRotation(new Vector3(posToTeleport.x, posToTeleport.y,posToTeleport.z - GameManager.Instance.amountToTeleport), cc.transform.localRotation);
                 Debug.Log("player teleported");
             }
         }
