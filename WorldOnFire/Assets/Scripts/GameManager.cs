@@ -54,16 +54,33 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     [Tooltip("Colors to be used for different house parts")]
     public Color[] houseColors;
-
+	[Space(5)]
+	[Header("Fire Settings")]
+	[Space(25)]
+	[Tooltip("Fire Prefab")]
+	public GameObject fire;
+	[Space(10)]
+	[Tooltip("Number of Fires in the scene at start")]
+	public int startFireDensity;
+	[Space(10)]
+	[Tooltip("Number of Fires in the scene")]
+	public int fireDensity;
+	[Space(10)]
+	[Tooltip("Number of Fires active")]
+	public int fireCount = 0;
+	[Space(10)]
+	[Tooltip("Grid Divisions (per side)")]
+	public int gridDivisions;
+	public int[,] stateGrid;
+	public GameObject[,] fireGrid;
     [Header("Score System")]
     [Tooltip("Holds the score of saving houses")]
     public float score = 10f;
     [Tooltip("Holds the text object")]
     public GameObject scoreText;
 
-
     private GameObject _gamePlane;
-    private List<GameObject> _spawnedObjects = new List<GameObject>();
+    public List<GameObject> _spawnedObjects = new List<GameObject>();
     private float _planeSizeToPositionMod;
     
     
@@ -83,9 +100,10 @@ public class GameManager : MonoBehaviour
     {
         _planeSizeToPositionMod = ((planeSize*10)/2);
         amountToTeleport = (planeSize * 10) - ((planeSize / 20) * 10);
-        
+		GenerateGrid();
         GenerateLevel();
         GenerateTeleport();
+		//fireCount = fireDensity;
     }
 
     // Update is called once per frame
@@ -148,6 +166,11 @@ public class GameManager : MonoBehaviour
         {
             PlaceObject(refillStation);
         }
+		for (var x = 0; x < startFireDensity; x++)
+		{
+			fireCount++;
+			PlaceObject(fire);
+		}
     }
 
     private void PlaceObject(GameObject toBePlaced)
@@ -193,7 +216,24 @@ public class GameManager : MonoBehaviour
                 }
             }
             _spawnedObjects.Add(placedObject);
-        } else 
+        } else if(toBePlaced.CompareTag("Fire"))
+		{
+			var xpos = Random.Range(0,gridDivisions - 1);
+			var ypos = Random.Range(0,gridDivisions - 1);
+			while(stateGrid[xpos,ypos] != 0)
+			{
+				xpos = Random.Range(0,gridDivisions - 1);
+				ypos = Random.Range(0,gridDivisions - 1);
+			}
+			Debug.Log(xpos);
+			Debug.Log(ypos);
+			
+			var currentFire = fireGrid[xpos,ypos];
+			FireSpreading fireScript = currentFire.GetComponent<FireSpreading>();
+			fireScript.state = 1;
+			currentFire.SetActive(true);
+			stateGrid[xpos,ypos] = 1;
+		}else 
         {
             var placedObject = Instantiate(toBePlaced, new Vector3(Random.Range(0-_planeSizeToPositionMod + spawnedObjectsOffset,0 + _planeSizeToPositionMod - spawnedObjectsOffset), 0, Random.Range(0 - _planeSizeToPositionMod + spawnedObjectsOffset, 0 + _planeSizeToPositionMod - spawnedObjectsOffset)), Quaternion.identity);
             if (_spawnedObjects.Count > 1)
@@ -212,9 +252,35 @@ public class GameManager : MonoBehaviour
         }
         
     }
+
+
+	private void GenerateGrid()
+	{
+		stateGrid = new int[gridDivisions,gridDivisions];
+		fireGrid = new GameObject[gridDivisions,gridDivisions];
+		for (var x = 0; x < gridDivisions; x++)
+		{
+			for (var y = 0; y < gridDivisions; y++)
+			{
+				stateGrid[x,y] = 0;
+				var newFire = Instantiate(fire,
+				new Vector3(((planeSize*10)/gridDivisions)*(x - (gridDivisions/2)), 0, ((planeSize*10)/gridDivisions)*(y - (gridDivisions/2)))
+				,Quaternion.identity);
+				FireSpreading newFireScript = newFire.GetComponent<FireSpreading>();
+				newFireScript.state = 0;
+				newFireScript.x = x;
+				newFireScript.y = y;	
+				fireGrid[x,y] = newFire;
+			}
+		}
+	}
+
+
     private void ScoreSystem()
     {
         
         scoreText.GetComponent<TextMeshProUGUI>().text = score.ToString();
     }
 }
+
+	
