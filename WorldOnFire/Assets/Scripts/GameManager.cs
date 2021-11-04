@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
 		GenerateGrid();
         GenerateLevel();
         GenerateTeleport();
+		fireCount = fireDensity;
     }
 
     // Update is called once per frame
@@ -221,25 +222,12 @@ public class GameManager : MonoBehaviour
 			}
 			Debug.Log(xpos);
 			Debug.Log(ypos);
-			/*var placedObject = Instantiate(toBePlaced, new Vector3(Random.Range(0-_planeSizeToPositionMod + spawnedObjectsOffset,0 + _planeSizeToPositionMod - spawnedObjectsOffset), 0, Random.Range(0 - _planeSizeToPositionMod + spawnedObjectsOffset, 0 + _planeSizeToPositionMod - spawnedObjectsOffset)), Quaternion.identity);
-            if (_spawnedObjects.Count > 1)
-            {
-                for (var x = 0; x < _spawnedObjects.Count; x++)
-                {
-                    if (placedObject.GetComponent<BoxCollider>().bounds
-                        .Intersects(_spawnedObjects[x].GetComponent<BoxCollider>().bounds))
-                    {
-                        Destroy(placedObject);
-                        PlaceObject(toBePlaced);
-                    }
-                }
-            }*/
+			
 			var currentFire = fireGrid[xpos,ypos];
 			FireSpreading fireScript = currentFire.GetComponent<FireSpreading>();
 			fireScript.state = 1;
 			currentFire.SetActive(true);
 			stateGrid[xpos,ypos] = 1;
-            //_spawnedObjects.Add(placedObject);
 		}else 
         {
             var placedObject = Instantiate(toBePlaced, new Vector3(Random.Range(0-_planeSizeToPositionMod + spawnedObjectsOffset,0 + _planeSizeToPositionMod - spawnedObjectsOffset), 0, Random.Range(0 - _planeSizeToPositionMod + spawnedObjectsOffset, 0 + _planeSizeToPositionMod - spawnedObjectsOffset)), Quaternion.identity);

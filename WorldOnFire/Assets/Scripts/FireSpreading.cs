@@ -57,10 +57,20 @@ public class FireSpreading : MonoBehaviour
 			case(3):
 			gameObject.SetActive(true);
 			transform.localScale = new Vector3(1.5f,1.5f,1.5f);
+			if(putout == true)
+			{
+				gameManagerScript.fireCount++;
+			}
+			putout = false;
 			break;
 			case(2):
 			gameObject.SetActive(true);
 			transform.localScale = new Vector3(1.0f,1.0f,1.0f);
+			if(putout == true)
+			{
+				gameManagerScript.fireCount++;
+			}
+			putout = false;
 			break;
 			case(1):
 			gameObject.SetActive(true);
@@ -145,6 +155,8 @@ public class FireSpreading : MonoBehaviour
 		newFire.SetActive(true);
 		FireSpreading newFireScript = newFire.GetComponent<FireSpreading>();
 		newFireScript.state += 1;
+		newFireScript.putout = false;
+		if(newFireScript.state == 1){gameManagerScript.fireCount += 1;}
 		gameManagerScript.stateGrid[(int)nextPos.x,(int)nextPos.y] += 1;
 	}
 }
