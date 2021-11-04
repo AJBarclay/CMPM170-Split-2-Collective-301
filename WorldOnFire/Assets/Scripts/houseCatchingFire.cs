@@ -30,6 +30,7 @@ public class houseCatchingFire : MonoBehaviour
         if(other.gameObject.name == "Extinguisher")
         {
             houseIsOnFire = false;
+            GameManager.Instance.score += 10;
             StopCoroutine(houseBurningDown());
         }
     }
