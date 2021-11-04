@@ -194,8 +194,13 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            //changing
-            placedObject.transform.GetChild(2).GetComponent<Renderer>().material.color = houseColors[Random.Range(0, houseColors.Length)];
+            //changing the color of the wall color material of house meshes
+            for(var x = 0; x < placedObject.transform.GetChild(1).GetComponent<Renderer>().materials.Length; x++) {
+                if (placedObject.transform.GetChild(1).GetComponent<Renderer>().materials[x].name == "WallColor (Instance)")
+                {
+                    placedObject.transform.GetChild(1).GetComponent<Renderer>().materials[x].color = houseColors[Random.Range(0, houseColors.Length)];
+                }
+            }
             
             //Adding to the collection of spawned objects
             _spawnedObjects.Add(placedObject);
