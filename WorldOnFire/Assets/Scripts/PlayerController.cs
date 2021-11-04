@@ -31,12 +31,30 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<CharacterController>().velocity.x > 0 ||gameObject.GetComponent<CharacterController>().velocity.z > 0)
+
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 10;
+        }
+        else
+        {
+            speed = 6;
+        }
+
+        if (gameObject.GetComponent<CharacterController>().velocity.magnitude > 0 && gameObject.GetComponent<CharacterController>().velocity.magnitude < 7)
         {
             gameObject.GetComponent<Animator>().SetBool("isWalking", true);
-        } else if (gameObject.GetComponent<CharacterController>().velocity.x == 0 || gameObject.GetComponent<CharacterController>().velocity.z == 0)
+            gameObject.GetComponent<Animator>().SetBool("isRunning", false);
+        }
+        else if (gameObject.GetComponent<CharacterController>().velocity.magnitude > 7)
         {
             gameObject.GetComponent<Animator>().SetBool("isWalking", false);
+            gameObject.GetComponent<Animator>().SetBool("isRunning", true);
+        }
+        else if (gameObject.GetComponent<CharacterController>().velocity.magnitude == 0)
+        {
+            gameObject.GetComponent<Animator>().SetBool("isWalking", false);
+            gameObject.GetComponent<Animator>().SetBool("isRunning", false);
         }
     }
 
