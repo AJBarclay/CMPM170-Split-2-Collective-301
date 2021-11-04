@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2727148308054246396}
   - component: {fileID: 3639289710683711587}
   - component: {fileID: 3135948120023640284}
+  - component: {fileID: 4057635317705055617}
   m_Layer: 0
   m_Name: FireParticleSystem 1
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -667,7 +668,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 10, z: 1}
+    m_Scale: {x: 10, y: 10, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -4804,3 +4805,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4057635317705055617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5436927586523436624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02cc18bd95d047447900fe2cabb7aa4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fire: {fileID: 5436927586523436624}
+  gameManagerScript: {fileID: 0}
+  timer: 5
+  state: 0
+  x: 0
+  y: 0
+  putout: 1

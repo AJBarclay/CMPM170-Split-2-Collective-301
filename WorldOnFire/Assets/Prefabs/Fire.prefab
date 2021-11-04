@@ -4818,7 +4818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02cc18bd95d047447900fe2cabb7aa4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameManager: {fileID: 0}
   fire: {fileID: 1850024240564441981}
   gameManagerScript: {fileID: 0}
   timer: 0

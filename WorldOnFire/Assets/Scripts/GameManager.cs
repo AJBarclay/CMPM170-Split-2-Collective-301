@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
 		GenerateGrid();
         GenerateLevel();
         GenerateTeleport();
-		fireCount = fireDensity;
+		//fireCount = fireDensity;
     }
 
     // Update is called once per frame
