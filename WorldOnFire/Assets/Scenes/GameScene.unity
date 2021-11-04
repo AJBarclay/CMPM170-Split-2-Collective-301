@@ -187,7 +187,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &344907807
 GameObject:
@@ -587,7 +587,7 @@ Transform:
   m_Children:
   - {fileID: 907933605}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625493808
 GameObject:
@@ -1087,8 +1087,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1241772771}
+  - component: {fileID: 1241772773}
   - component: {fileID: 1241772770}
-  - component: {fileID: 1241772772}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -1204,104 +1204,35 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1241772772
-AudioSource:
+--- !u!114 &1241772773
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241772769}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bdedef9ed3949b046b7ab531a66e0bef, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f306041efb81d4e58b836d0fb6d4971f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: GrassFootstep1
+    audioClip: {fileID: 8300000, guid: 5ec076dd0e2cbde4e951de369a1736b1, type: 3}
+    volume: 0.494
+    pitch: 1
+    playOnAwake: 0
+    loop: 1
+    audioSource: {fileID: 0}
+  - name: Fire
+    audioClip: {fileID: 8300000, guid: 254b0d076d470ff4eb957b2c42a65be9, type: 3}
+    volume: 0.494
+    pitch: 1
+    playOnAwake: 0
+    loop: 1
+    audioSource: {fileID: 0}
 --- !u!1 &1426975916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,6 +1265,7 @@ MonoBehaviour:
   planeSize: 10
   planeColor: {r: 0.1263592, g: 0.9433962, b: 0.031149892, a: 0}
   spawnedObjectsOffset: 12
+  smokeEffect: {fileID: 5436927586523436624, guid: e3ac00c2a18404ee1be7d0848e7bdae8, type: 3}
   teleportBoundary: {fileID: 3539908739229813953, guid: 8fda851fc6421439cb5cda9735d12c0e, type: 3}
   amountToTeleport: 0
   refillStation: {fileID: 2690741790345615283, guid: 6ddd0e91549a34869a9d294ef8484272, type: 3}
@@ -1387,7 +1319,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1512795085
 GameObject:
@@ -2020,7 +1952,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &2102319952
 GameObject:
@@ -2207,6 +2139,18 @@ PrefabInstance:
       propertyPath: m_ClearFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1825020538507063664, guid: 877ae7bf7b4ef4a4ab7201a36112eb8f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825020538507063664, guid: 877ae7bf7b4ef4a4ab7201a36112eb8f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825020538507063664, guid: 877ae7bf7b4ef4a4ab7201a36112eb8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.44
+      objectReference: {fileID: 0}
     - target: {fileID: 2613280775418166315, guid: 877ae7bf7b4ef4a4ab7201a36112eb8f, type: 3}
       propertyPath: upLimit
       value: -10
@@ -2225,7 +2169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6070588679658693677, guid: 877ae7bf7b4ef4a4ab7201a36112eb8f, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6070588679658693677, guid: 877ae7bf7b4ef4a4ab7201a36112eb8f, type: 3}
       propertyPath: m_LocalPosition.x

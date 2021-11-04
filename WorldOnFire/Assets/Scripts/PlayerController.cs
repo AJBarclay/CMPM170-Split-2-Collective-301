@@ -31,7 +31,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (gameObject.GetComponent<Animator>().GetBool("isWalking"))
+        {
+            AudioManager.Instance.Play(0);
+        } else if (gameObject.GetComponent<Animator>().GetBool("isWalking") == false)
+        {
+            AudioManager.Instance.Stop(0);
+        }
         if(Input.GetKey(KeyCode.LeftShift))
         {
             speed = 10;
@@ -39,6 +45,29 @@ public class PlayerController : MonoBehaviour
         else
         {
             speed = 6;
+        }
+
+        if (Input.GetMouseButton(1))
+        {
+            transform.GetChild(2).GetComponent<Camera>().fieldOfView = 40;
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 rayOrigin = transform.GetChild(2).GetComponent<Camera>().ViewportToWorldPoint (new Vector3(0.5f, 0.5f, 0.0f));
+                RaycastHit hit;
+                if (Physics.Raycast(rayOrigin, transform.GetChild(2).GetComponent<Camera>().transform.forward, out hit, 10.0f))
+                {
+                    if (hit.collider.gameObject.CompareTag("Fire"))
+                    {
+                        Debug.Log("fire extinguish");
+                        //extinguish fire slowly
+                    }
+                    
+                }
+            }
+        }
+        else
+        {
+            transform.GetChild(2).GetComponent<Camera>().fieldOfView = 60;
         }
 
         if (gameObject.GetComponent<CharacterController>().velocity.magnitude > 0 && gameObject.GetComponent<CharacterController>().velocity.magnitude < 7)

@@ -11,11 +11,9 @@ GameObject:
   - component: {fileID: 2727148308054246396}
   - component: {fileID: 3639289710683711587}
   - component: {fileID: 3135948120023640284}
-  - component: {fileID: 4057635317705055617}
-  - component: {fileID: 4555262678724968660}
   m_Layer: 0
-  m_Name: FireParticleSystem 1
-  m_TagString: Fire
+  m_Name: SmokeSystem
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,13 +41,13 @@ ParticleSystem:
   m_GameObject: {fileID: 5436927586523436624}
   serializedVersion: 7
   lengthInSec: 5
-  simulationSpeed: 1.5
+  simulationSpeed: 0.6
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -170,7 +168,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 13.95
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -286,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 6
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -669,7 +667,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: -90, y: 0, z: 0}
-    m_Scale: {x: 10, y: 10, z: 1}
+    m_Scale: {x: 28.7, y: 100, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -867,7 +865,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 200
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -973,7 +971,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -1305,21 +1303,21 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.9864795, b: 0, a: 0.75686276}
-        key1: {r: 1, g: 0.8996066, b: 0.1607843, a: 1}
-        key2: {r: 1, g: 0.49063167, b: 0.35294116, a: 1}
-        key3: {r: 0.5283019, g: 0.05731578, b: 0.05731578, a: 0.41568628}
-        key4: {r: 0, g: 0, b: 0, a: 0.23921569}
-        key5: {r: 0, g: 0, b: 0, a: 0.23921569}
-        key6: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 0.1509434, g: 0.1509434, b: 0.14026344, a: 1}
+        key1: {r: 0.3301887, g: 0.32942533, b: 0.28190637, a: 1}
+        key2: {r: 0.4339623, g: 0.4222734, b: 0.33775365, a: 1}
+        key3: {r: 0.4245283, g: 0.39139616, b: 0.38247597, a: 1}
+        key4: {r: 0.3584906, g: 0.34665364, b: 0.34665364, a: 0.8117647}
+        key5: {r: 0.4433962, g: 0.41202384, b: 0.41202384, a: 0.23921569}
+        key6: {r: 0.5283019, g: 0.057315767, b: 0.057315767, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 21974
-        ctime2: 40478
-        ctime3: 62066
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
+        ctime0: 4048
+        ctime1: 9830
+        ctime2: 21974
+        ctime3: 41827
+        ctime4: 62066
+        ctime5: 63222
+        ctime6: 63222
         ctime7: 0
         atime0: 0
         atime1: 18119
@@ -1330,7 +1328,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 4
+        m_NumColorKeys: 6
         m_NumAlphaKeys: 5
       minGradient:
         serializedVersion: 2
@@ -4806,36 +4804,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &4057635317705055617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5436927586523436624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02cc18bd95d047447900fe2cabb7aa4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fire: {fileID: 5436927586523436624}
-  gameManagerScript: {fileID: 0}
-  timer: 5
-  state: 0
-  x: 0
-  y: 0
-  putout: 1
-  scaleMult: 1
---- !u!65 &4555262678724968660
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5436927586523436624}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 11.910663, y: 9.619625, z: 11.678495}
-  m_Center: {x: -0.010251522, y: 3.6940823, z: -0.0382576}

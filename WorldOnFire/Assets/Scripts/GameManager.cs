@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     [Range(0, 100)]
     public int spawnedObjectsOffset;
     
+    [Header("Smoke Settings")]
+    [Tooltip("Smoke effect on the edges of the game plane")]
+    public GameObject smokeEffect;
+    
     [Space(5)]
     [Header("Teleport Settings")]
     [Space(25)]
@@ -117,10 +121,15 @@ public class GameManager : MonoBehaviour
         for (var x = 0; x < 4; x++)
         {
             GameObject teleportBound;
+            GameObject smokeEdge;
             if (x == 0)
             { 
                 teleportBound =  Instantiate(teleportBoundary, new Vector3(0 - _planeSizeToPositionMod, 0, 0 ),
                     Quaternion.identity);
+                smokeEdge = Instantiate(smokeEffect, new Vector3(0 - _planeSizeToPositionMod - 10 , 0, 0 ),
+                    Quaternion.identity);
+                ParticleSystem.ShapeModule module = smokeEdge.GetComponent<ParticleSystem>().shape;
+                module.scale = new Vector3(28.7f, 100.0f, 1);
                 teleportBound.GetComponent<Teleportation>().teleportationAxis = Teleportation.ColliderEnum.XAxis;
                 teleportBound.GetComponent<BoxCollider>().size = new Vector3(teleportBound.GetComponent<BoxCollider>().size.x, teleportBound.GetComponent<BoxCollider>().size.y, planeSize * 10);
 
@@ -128,12 +137,20 @@ public class GameManager : MonoBehaviour
             {
                 teleportBound = Instantiate(teleportBoundary, new Vector3(0 + _planeSizeToPositionMod, 0, 0 ),
                     Quaternion.identity);
+                smokeEdge = Instantiate(smokeEffect, new Vector3(0 + _planeSizeToPositionMod + 10 , 0, 0 ),
+                    Quaternion.identity);
+                ParticleSystem.ShapeModule module = smokeEdge.GetComponent<ParticleSystem>().shape;
+                module.scale = new Vector3(28.7f, planeSize * 10, 1);
                 teleportBound.GetComponent<Teleportation>().teleportationAxis = Teleportation.ColliderEnum.XAxis;
                 teleportBound.GetComponent<BoxCollider>().size = new Vector3(teleportBound.GetComponent<BoxCollider>().size.x, teleportBound.GetComponent<BoxCollider>().size.y, planeSize * 10);
             } else if (x == 2)
             {
                 teleportBound = Instantiate(teleportBoundary, new Vector3(0, 0, 0 + _planeSizeToPositionMod),
                     Quaternion.identity);
+                smokeEdge = Instantiate(smokeEffect, new Vector3(0, 0, 0 + _planeSizeToPositionMod + 10 ),
+                    Quaternion.Euler(0,90.0f,0));
+                ParticleSystem.ShapeModule module = smokeEdge.GetComponent<ParticleSystem>().shape;
+                module.scale = new Vector3(28.7f, planeSize * 10, 1);
                 teleportBound.transform.rotation = Quaternion.Euler(0,90,0);
                 teleportBound.GetComponent<Teleportation>().teleportationAxis = Teleportation.ColliderEnum.ZAxis;
                 teleportBound.GetComponent<BoxCollider>().size = new Vector3(teleportBound.GetComponent<BoxCollider>().size.x, teleportBound.GetComponent<BoxCollider>().size.y, planeSize * 10);
@@ -141,6 +158,10 @@ public class GameManager : MonoBehaviour
             {
                 teleportBound = Instantiate(teleportBoundary, new Vector3(0, 0, 0 - _planeSizeToPositionMod),
                     Quaternion.identity);
+                smokeEdge = Instantiate(smokeEffect, new Vector3(0, 0, 0 - _planeSizeToPositionMod - 10 ),
+                    Quaternion.Euler(0,90.0f,0));
+                ParticleSystem.ShapeModule module = smokeEdge.GetComponent<ParticleSystem>().shape;
+                module.scale = new Vector3(28.7f, planeSize * 10, 1);
                 teleportBound.transform.rotation = Quaternion.Euler(0,90,0);
                 teleportBound.GetComponent<Teleportation>().teleportationAxis = Teleportation.ColliderEnum.ZAxis;
                 teleportBound.GetComponent<BoxCollider>().size = new Vector3(teleportBound.GetComponent<BoxCollider>().size.x, teleportBound.GetComponent<BoxCollider>().size.y, planeSize * 10);
