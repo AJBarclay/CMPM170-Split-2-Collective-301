@@ -12,6 +12,7 @@ public class FireSpreading : MonoBehaviour
 	public int x;
 	public int y;
 	public bool putout = true;
+	public float scaleMult = 1.0f;
 	
 	
     // Start is called before the first frame update
@@ -56,7 +57,7 @@ public class FireSpreading : MonoBehaviour
 			break;
 			case(3):
 			gameObject.SetActive(true);
-			transform.localScale = new Vector3(1.5f,1.5f,1.5f);
+			transform.localScale = new Vector3(scaleMult * 1.5f,scaleMult * 1.5f,scaleMult * 1.5f);
 			if(putout == true)
 			{
 				gameManagerScript.fireCount++;
@@ -65,7 +66,7 @@ public class FireSpreading : MonoBehaviour
 			break;
 			case(2):
 			gameObject.SetActive(true);
-			transform.localScale = new Vector3(1.0f,1.0f,1.0f);
+			transform.localScale = new Vector3(scaleMult * 1.0f,scaleMult * 1.0f,scaleMult * 1.0f);
 			if(putout == true)
 			{
 				gameManagerScript.fireCount++;
@@ -74,7 +75,7 @@ public class FireSpreading : MonoBehaviour
 			break;
 			case(1):
 			gameObject.SetActive(true);
-			transform.localScale = new Vector3(0.5f,0.5f,0.5f);
+			transform.localScale = new Vector3(scaleMult * 0.5f,scaleMult * 0.5f,scaleMult * 0.5f);
 			if(putout == true)
 			{
 				gameManagerScript.fireCount++;
@@ -82,7 +83,7 @@ public class FireSpreading : MonoBehaviour
 			putout = false;
 			break;
 			case(0):
-			transform.localScale = new Vector3(0.0f,0.0f,0.0f);
+			transform.localScale = new Vector3(scaleMult * 0.0f,scaleMult * 0.0f,scaleMult * 0.0f);
 			if(	putout == false)
 			{
 				gameManagerScript.fireCount--;
