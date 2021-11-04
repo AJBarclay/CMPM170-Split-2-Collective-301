@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using TMPro.EditorUtilities;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,7 +54,6 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     [Tooltip("Colors to be used for different house parts")]
     public Color[] houseColors;
-	
 	[Space(5)]
 	[Header("Fire Settings")]
 	[Space(25)]
@@ -73,7 +73,12 @@ public class GameManager : MonoBehaviour
 	public int gridDivisions;
 	public int[,] stateGrid;
 	public GameObject[,] fireGrid;
-    
+    [Header("Score System")]
+    [Tooltip("Holds the score of saving houses")]
+    public float score = 10f;
+    [Tooltip("Holds the text object")]
+    public GameObject scoreText;
+
     private GameObject _gamePlane;
     public List<GameObject> _spawnedObjects = new List<GameObject>();
     private float _planeSizeToPositionMod;
@@ -102,9 +107,9 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        ScoreSystem();
     }
 
     private void GenerateTeleport()
@@ -247,7 +252,8 @@ public class GameManager : MonoBehaviour
         }
         
     }
-	
+
+
 	private void GenerateGrid()
 	{
 		stateGrid = new int[gridDivisions,gridDivisions];
@@ -270,7 +276,11 @@ public class GameManager : MonoBehaviour
 	}
 
 
-	
+    private void ScoreSystem()
+    {
+        
+        scoreText.GetComponent<TextMeshProUGUI>().text = score.ToString();
+    }
 }
 
 	
