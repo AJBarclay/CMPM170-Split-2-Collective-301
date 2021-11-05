@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1851934231759291052}
   - component: {fileID: 4492220879336830566}
   - component: {fileID: 125773922459073255}
+  - component: {fileID: 8447411294539548829}
+  - component: {fileID: -3700774637050670360}
   m_Layer: 0
   m_Name: FireRefuel
   m_TagString: Refill
@@ -109,3 +111,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.9395144, y: 5.673162, z: 3.0583847}
   m_Center: {x: -0.035771966, y: -1.3224528, z: 0.5993782}
+--- !u!136 &8447411294539548829
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690741790345615283}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 7.17
+  m_Height: 5.673162
+  m_Direction: 1
+  m_Center: {x: -0.035771966, y: -1.3224528, z: 0.5993782}
+--- !u!114 &-3700774637050670360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690741790345615283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e290d42080c2c074e9cc936ca4fcc087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIsNear: 0
