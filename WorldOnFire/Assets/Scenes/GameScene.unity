@@ -1790,7 +1790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1254411de2404af7977839bf30964ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planeSize: 10
+  planeSize: 20
   planeColor: {r: 0.1263592, g: 0.9433962, b: 0.031149892, a: 0}
   spawnedObjectsOffset: 12
   smokeEffect: {fileID: 5436927586523436624, guid: e3ac00c2a18404ee1be7d0848e7bdae8, type: 3}
@@ -1829,9 +1829,9 @@ MonoBehaviour:
   - {r: 0.12434357, g: 0.3207547, b: 0.11044855, a: 1}
   fire: {fileID: 5436927586523436624, guid: caa7497e39553474aba8489e6ae33f87, type: 3}
   startFireDensity: 4
-  fireDensity: 100
+  fireDensity: 400
   fireCount: 0
-  gridDivisions: 10
+  gridDivisions: 20
   score: 0
   scoreText: {fileID: 1596900780}
   _spawnedObjects: []
