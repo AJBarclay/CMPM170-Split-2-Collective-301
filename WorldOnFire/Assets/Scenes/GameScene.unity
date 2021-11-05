@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1828,7 +1828,7 @@ MonoBehaviour:
   - {r: 0.2735849, g: 0.26989776, b: 0.26197046, a: 1}
   - {r: 0.12434357, g: 0.3207547, b: 0.11044855, a: 1}
   fire: {fileID: 5436927586523436624, guid: caa7497e39553474aba8489e6ae33f87, type: 3}
-  startFireDensity: 1
+  startFireDensity: 4
   fireDensity: 100
   fireCount: 0
   gridDivisions: 10

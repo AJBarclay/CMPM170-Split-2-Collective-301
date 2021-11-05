@@ -28,7 +28,13 @@ public class houseCatchingFire : MonoBehaviour
 		}
 		if (fireCount <= 0)
 		{
+			houseIsOnFire = false;
 			StopCoroutine(houseBurningDown());
+		}
+		else
+		{
+			houseIsOnFire = true;
+			StartCoroutine(houseBurningDown());
 		}
     }
 
@@ -55,7 +61,7 @@ public class houseCatchingFire : MonoBehaviour
     IEnumerator houseBurningDown()
     {
         yield return new WaitForSeconds(houseTimer);
-		if (fireCount >= 0)
+		if (houseIsOnFire)
 		{
 			Destroy(gameObject);			
 		}
