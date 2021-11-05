@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return _instance; } }
 
     [Header("Game Plane Settings")]
+    [Tooltip("Game Plane to spawn")]
+    public GameObject gamePlaneToSpawn;
     [Tooltip("Size of the game plane")]
     public float planeSize;
     [Tooltip("Color of the game plane")]
@@ -107,7 +109,8 @@ public class GameManager : MonoBehaviour
 		GenerateGrid();
         GenerateLevel();
         GenerateTeleport();
-		//fireCount = fireDensity;
+        GeneratePlane();
+        //fireCount = fireDensity;
     }
 
     // Update is called once per frame
@@ -192,6 +195,7 @@ public class GameManager : MonoBehaviour
 			fireCount++;
 			PlaceObject(fire);
 		}
+        
     }
 
     private void PlaceObject(GameObject toBePlaced)
@@ -300,6 +304,15 @@ public class GameManager : MonoBehaviour
 			}
 		}
 	}
+
+    //changes the plane that was used to create the level with to low poly production plane prefab 
+    private void GeneratePlane()
+    {
+        var _spawnedLowPolyPlane = Instantiate(gamePlaneToSpawn, Vector3.zero, Quaternion.identity);
+        _spawnedLowPolyPlane.transform.localScale = new Vector3(planeSize * 5, 50, planeSize * 5);
+        _gamePlane.SetActive(false);
+        
+    }
 
 
     private void ScoreSystem()
