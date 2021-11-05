@@ -307,6 +307,12 @@ public class GameManager : MonoBehaviour
         
         scoreText.GetComponent<TextMeshProUGUI>().text = score.ToString();
     }
+
+    public void QuitGame1()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
+    }
 }
 
 	
