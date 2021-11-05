@@ -4827,6 +4827,9 @@ MonoBehaviour:
   y: 0
   putout: 1
   scaleMult: 1
+  cooldownTimer: 1
+  initialCooldownTimer: 0
+  extinguishCooldown: 0
 --- !u!65 &4555262678724968660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4838,8 +4841,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 5, z: 0}
+  m_Size: {x: 8, y: 8, z: 8}
+  m_Center: {x: 0, y: 4, z: 0}
 --- !u!54 &7128144882597015880
 Rigidbody:
   m_ObjectHideFlags: 0

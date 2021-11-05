@@ -61,7 +61,7 @@ public class houseCatchingFire : MonoBehaviour
     IEnumerator houseBurningDown()
     {
         yield return new WaitForSeconds(houseTimer);
-		if (houseIsOnFire)
+		if (houseIsOnFire == true)
 		{
 			Destroy(gameObject);			
 		}
@@ -69,6 +69,7 @@ public class houseCatchingFire : MonoBehaviour
 	
 	public void houseExtinguish()
 	{
+		if (houseIsOnFire == false) {return;}
 		houseIsOnFire = false;
         GameManager.Instance.score += 10;
         StopCoroutine(houseBurningDown());
