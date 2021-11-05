@@ -93,6 +93,7 @@ public class FireSpreading : MonoBehaviour
 			break;
 			default:
 			state = 0;
+			gameManagerScript.stateGrid[x,y] = 0;
 			gameObject.SetActive(false);
 			break;
 		}
@@ -159,5 +160,11 @@ public class FireSpreading : MonoBehaviour
 		newFireScript.putout = false;
 		if(newFireScript.state == 1){gameManagerScript.fireCount += 1;}
 		gameManagerScript.stateGrid[(int)nextPos.x,(int)nextPos.y] += 1;
+	}
+	
+	public void Extinguish()
+	{
+		state -= 1;
+		gameManagerScript.stateGrid[x,y] -= 1;
 	}
 }

@@ -59,7 +59,8 @@ public class PlayerController : MonoBehaviour
                     if (hit.collider.gameObject.CompareTag("Fire"))
                     {
                         Debug.Log("fire extinguish");
-                        //extinguish fire slowly
+                        FireSpreading hitFireScript = hit.collider.gameObject.GetComponent<FireSpreading>();
+						hitFireScript.Extinguish();
                     }
                     
                 }
