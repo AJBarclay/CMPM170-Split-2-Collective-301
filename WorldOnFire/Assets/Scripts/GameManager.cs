@@ -126,10 +126,10 @@ public class GameManager : MonoBehaviour
             { 
                 teleportBound =  Instantiate(teleportBoundary, new Vector3(0 - _planeSizeToPositionMod, 0, 0 ),
                     Quaternion.identity);
-                smokeEdge = Instantiate(smokeEffect, new Vector3(0 - _planeSizeToPositionMod - 10 , 0, 0 ),
+                smokeEdge = Instantiate(smokeEffect, new Vector3(0 - _planeSizeToPositionMod - 10, 0, 0 ),
                     Quaternion.identity);
                 ParticleSystem.ShapeModule module = smokeEdge.GetComponent<ParticleSystem>().shape;
-                module.scale = new Vector3(28.7f, 100.0f, 1);
+                module.scale = new Vector3(28.7f, planeSize * 10, 1);
                 teleportBound.GetComponent<Teleportation>().teleportationAxis = Teleportation.ColliderEnum.XAxis;
                 teleportBound.GetComponent<BoxCollider>().size = new Vector3(teleportBound.GetComponent<BoxCollider>().size.x, teleportBound.GetComponent<BoxCollider>().size.y, planeSize * 10);
 
