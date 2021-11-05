@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity = 2f;
     public float upLimit = -50;
     public float downLimit = 50;
+	public LineRenderer streamLine;
+	public float rangeStretch = 5.0f;
+	public float rangeDelta = 0.0f;
+	public float range = 10.0f;
     
   
     void Awake()
@@ -31,6 +35,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		Debug.Log(rangeDelta);
         if (gameObject.GetComponent<Animator>().GetBool("isWalking"))
         {
             AudioManager.Instance.Play(0);
@@ -46,7 +51,7 @@ public class PlayerController : MonoBehaviour
         {
             speed = 6;
         }
-
+		streamLine.enabled = false;
         if (Input.GetMouseButton(1))
         {
             transform.GetChild(2).GetComponent<Camera>().fieldOfView = 40;
@@ -54,8 +59,14 @@ public class PlayerController : MonoBehaviour
             {
                 Vector3 rayOrigin = transform.GetChild(2).GetComponent<Camera>().ViewportToWorldPoint (new Vector3(0.5f, 0.5f, 0.0f));
                 RaycastHit hit;
-                if (Physics.Raycast(rayOrigin, transform.GetChild(2).GetComponent<Camera>().transform.forward, out hit, 10.0f))
+                if (Physics.Raycast(rayOrigin, transform.GetChild(2).GetComponent<Camera>().transform.forward, out hit, rangeDelta + range))
                 {
+					if (rangeDelta < rangeStretch) {rangeDelta += Time.deltaTime;}
+					if (rangeDelta > rangeStretch) {rangeDelta = rangeStretch;}
+					
+					Vector3[] positions = new Vector3 [2] {transform.position, hit.point};
+					streamLine.SetPositions(positions);
+					streamLine.enabled = true;
                     if (hit.collider.gameObject.CompareTag("Fire"))
                     {
                         FireSpreading hitFireScript = hit.collider.gameObject.GetComponent<FireSpreading>();
@@ -68,10 +79,23 @@ public class PlayerController : MonoBehaviour
 					}
                     
                 }
+				else
+				{
+					if (rangeDelta > 0 ) {rangeDelta -= Time.deltaTime;}
+					if (rangeDelta < 0) {rangeDelta = 0;}
+					streamLine.enabled = false;
+				}
             }
+			else
+			{
+				if (rangeDelta > 0 ) {rangeDelta -= Time.deltaTime;}
+				if (rangeDelta < 0) {rangeDelta = 0;}
+			}
         }
         else
         {
+			if (rangeDelta > 0) {rangeDelta -= Time.deltaTime;}
+			if (rangeDelta < 0) {rangeDelta = 0;}
             transform.GetChild(2).GetComponent<Camera>().fieldOfView = 60;
         }
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -398,6 +398,71 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &169145877
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 354585562413348865, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_Name
+      value: ExtinguisherStream
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398292760140205765, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 6746
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398292760140205765, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime2
+      value: 63029
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209289842957594450, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209289842957594450, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209289842957594450, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209289842957594450, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209289842957594450, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209289842957594450, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209289842957594450, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209289842957594450, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209289842957594450, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209289842957594450, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209289842957594450, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
 --- !u!1 &253061357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,6 +1826,11 @@ MonoBehaviour:
     playOnAwake: 0
     loop: 1
     audioSource: {fileID: 0}
+--- !u!120 &1424683494 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 5398292760140205765, guid: 7f019e4aca6cde94996a89921612e2e8, type: 3}
+  m_PrefabInstance: {fileID: 169145877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1426975916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +1861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamePlaneToSpawn: {fileID: 5162957798702676683, guid: 44aac01019943463981aa6c76ccb4aae, type: 3}
-  planeSize: 10
+  planeSize: 20
   planeColor: {r: 0.1263592, g: 0.9433962, b: 0.031149892, a: 0}
   spawnedObjectsOffset: 12
   smokeEffect: {fileID: 5436927586523436624, guid: e3ac00c2a18404ee1be7d0848e7bdae8, type: 3}
@@ -1816,23 +1886,23 @@ MonoBehaviour:
   - {fileID: 8400884644335411762, guid: e62c146b500594630a3b3feb972ef809, type: 3}
   - {fileID: 8783227694846430200, guid: d8b19c11eba1f40f2b4fcc533f4e7222, type: 3}
   - {fileID: 3621588212885773971, guid: c272ab3e234ec43e0bf124b963b7c278, type: 3}
-  foliageDensity: 10
+  foliageDensity: 30
   houses:
   - {fileID: 5871584229480026539, guid: d322cf969141641c39bfdf26a02bf650, type: 3}
   - {fileID: 3916691522601767449, guid: f6e9fe1aea4dd4632825f891e21b8397, type: 3}
   - {fileID: 7608625974257127290, guid: b5cc52c73de68423eabd6f50cca8ed89, type: 3}
   - {fileID: 7824064790973721378, guid: d73334655542a44f9ab72404a7c98846, type: 3}
   - {fileID: 8903487676696582044, guid: 0c5e4648847974f3a9b26c4e584f20d0, type: 3}
-  houseDensity: 6
+  houseDensity: 18
   houseColors:
   - {r: 0.254717, g: 0.17474735, b: 0.0084104715, a: 1}
   - {r: 0.2735849, g: 0.26989776, b: 0.26197046, a: 1}
   - {r: 0.12434357, g: 0.3207547, b: 0.11044855, a: 1}
   fire: {fileID: 5436927586523436624, guid: caa7497e39553474aba8489e6ae33f87, type: 3}
-  startFireDensity: 4
-  fireDensity: 100
+  startFireDensity: 8
+  fireDensity: 400
   fireCount: 0
-  gridDivisions: 10
+  gridDivisions: 20
   score: 0
   scoreText: {fileID: 1596900780}
   _spawnedObjects: []
@@ -2951,6 +3021,10 @@ PrefabInstance:
       propertyPath: downLimit
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2613280775418166315, guid: 877ae7bf7b4ef4a4ab7201a36112eb8f, type: 3}
+      propertyPath: streamLine
+      value: 
+      objectReference: {fileID: 1424683494}
     - target: {fileID: 2613280775418166315, guid: 877ae7bf7b4ef4a4ab7201a36112eb8f, type: 3}
       propertyPath: cameraHolder
       value: 
