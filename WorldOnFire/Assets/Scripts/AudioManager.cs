@@ -52,7 +52,6 @@ public class AudioManager : MonoBehaviour
 
     public void Play(int index)
     {
-        Debug.Log("played audio");
         sounds[index].audioSource.Play();
     }
     public void Stop(int index)

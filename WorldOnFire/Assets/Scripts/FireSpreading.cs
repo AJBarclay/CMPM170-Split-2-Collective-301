@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FireSpreading : MonoBehaviour
 {
-	//public GameObject GameManager;
 	public GameObject fire;
 	public GameManager gameManagerScript;
 	public float timer = 5.0f;
@@ -18,10 +17,7 @@ public class FireSpreading : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		//GameManager  = GameObject.Find("GameManager");
 		fire = GameObject.Find("Fire");
-		//fire = gameObject;
-		//gameManagerScript = GameManager.GetComponent<GameManager>();
 		gameManagerScript = GameManager.Instance;
         
     }
@@ -89,7 +85,7 @@ public class FireSpreading : MonoBehaviour
 				gameManagerScript.fireCount--;
 			}
 			putout = true;
-			//gameObject.SetActive(false);
+			gameObject.SetActive(false);
 			break;
 			default:
 			state = 0;
@@ -101,11 +97,8 @@ public class FireSpreading : MonoBehaviour
 	}
 
 	void SpreadFire()
-	{	
-		//fire = GameObject.Find("Fire");
+	{
 		fire = gameObject;
-		//GameManager  = GameObject.Find("GameManager");
-		//gameManagerScript = GameManager.GetComponent<GameManager>();
         
 		int direction = Random.Range(1,4);
 		Debug.Log(direction);

@@ -210,6 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8125719073844694310}
   - component: {fileID: 900726617855587796}
+  - component: {fileID: 8152119345926372641}
   m_Layer: 0
   m_Name: House4
   m_TagString: House
@@ -246,3 +247,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 16.18, y: 14.38, z: 19.65}
   m_Center: {x: 0, y: 5.45, z: 0}
+--- !u!114 &8152119345926372641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8903487676696582044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b21dbcba4975544987da6f176d6df34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  houseTimer: 30
+  houseIsOnFire: 0
+  fires: []

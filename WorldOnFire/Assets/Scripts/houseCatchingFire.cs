@@ -6,6 +6,8 @@ public class houseCatchingFire : MonoBehaviour
 {
     public float houseTimer = 10;
     public bool houseIsOnFire = false;
+	public List<GameObject> fires;
+	public int fireCount = 0;
     // public gameObject fire;
     // Start is called before the first frame update
     void Start()
@@ -16,15 +18,31 @@ public class houseCatchingFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (fires.Count > 0)
+		{
+			foreach (var fire in fires)
+			{
+				var fireScript = fire.GetComponent<FireSpreading>();
+				fireCount += fireScript.state;
+			}
+		}
+		if (fireCount >= 0)
+		{
+			StopCoroutine(houseBurningDown());
+		}
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Fire")
+        if(other.gameObject.CompareTag("Fire"))
         {
             houseIsOnFire = true;
             StartCoroutine(houseBurningDown());
+			if(!fires.Contains(other.gameObject))
+			{
+				fires.Add(other.gameObject);
+				Debug.Log(other.gameObject);
+			}
 
         }
         if(other.gameObject.name == "Extinguisher")
@@ -38,6 +56,27 @@ public class houseCatchingFire : MonoBehaviour
     IEnumerator houseBurningDown()
     {
         yield return new WaitForSeconds(houseTimer);
-        Destroy(gameObject);
+		if (fireCount >= 0)
+		{
+			Destroy(gameObject);			
+		}
     }
+	
+	public void houseExtinguish()
+	{
+		houseIsOnFire = false;
+        GameManager.Instance.score += 10;
+        StopCoroutine(houseBurningDown());
+		Debug.Log(fires.Count);
+		if(fires.Count > 0)
+		{
+			foreach(var fire in fires)
+			{
+				if(!fire.CompareTag("Fire")){continue;}
+				var fireScript = fire.GetComponent<FireSpreading>();
+				fireScript.Extinguish();
+			}
+		}
+		
+	}
 }
