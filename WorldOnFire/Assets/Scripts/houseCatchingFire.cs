@@ -26,7 +26,7 @@ public class houseCatchingFire : MonoBehaviour
 				fireCount += fireScript.state;
 			}
 		}
-		if (fireCount >= 0)
+		if (fireCount <= 0)
 		{
 			StopCoroutine(houseBurningDown());
 		}
@@ -41,7 +41,6 @@ public class houseCatchingFire : MonoBehaviour
 			if(!fires.Contains(other.gameObject))
 			{
 				fires.Add(other.gameObject);
-				Debug.Log(other.gameObject);
 			}
 
         }
@@ -67,7 +66,6 @@ public class houseCatchingFire : MonoBehaviour
 		houseIsOnFire = false;
         GameManager.Instance.score += 10;
         StopCoroutine(houseBurningDown());
-		Debug.Log(fires.Count);
 		if(fires.Count > 0)
 		{
 			foreach(var fire in fires)

@@ -12,11 +12,15 @@ public class FireSpreading : MonoBehaviour
 	public int y;
 	public bool putout = true;
 	public float scaleMult = 1.0f;
+	public float cooldownTimer = 1.0f;
+	public float initialCooldownTimer;
+	public bool extinguishCooldown = false;
 	
 	
     // Start is called before the first frame update
     void Start()
     {
+		initialCooldownTimer = cooldownTimer;
 		fire = GameObject.Find("Fire");
 		gameManagerScript = GameManager.Instance;
         
@@ -25,7 +29,15 @@ public class FireSpreading : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(cooldownTimer > 0)
+		{
+			cooldownTimer -= Time.deltaTime;
+		}
+		else if (cooldownTimer <= 0)
+		{
+			extinguishCooldown = false;
+			cooldownTimer = initialCooldownTimer;
+		}
 		state = gameManagerScript.stateGrid[x,y];
 		if(timer > 0 && state > 0)
 		{
@@ -157,6 +169,8 @@ public class FireSpreading : MonoBehaviour
 	
 	public void Extinguish()
 	{
+		if(extinguishCooldown == true) {return;}
+		extinguishCooldown = true;
 		state -= 1;
 		gameManagerScript.stateGrid[x,y] -= 1;
 	}
