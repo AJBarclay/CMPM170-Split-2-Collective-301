@@ -3,7 +3,10 @@ guid: 55b69c6b321a2410d995b358dd7a4cef
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - characterController: {instanceID: 0}
+  - cameraHolder: {instanceID: 0}
+  - streamLine: {fileID: 4430948553395269630, guid: 720d1b8da99c20c46a8e86abd9c82fef, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -160,4 +160,16 @@ public class FireSpreading : MonoBehaviour
 		if(newFireScript.state == 1){gameManagerScript.fireCount += 1;}
 		gameManagerScript.stateGrid[(int)nextPos.x,(int)nextPos.y] += 1;
 	}
+<<<<<<< Updated upstream
+=======
+	
+	public void Extinguish()
+	{
+		if(extinguishCooldown == true) {return;}
+		extinguishCooldown = true;
+		gameManagerScript.score += 5;
+		state -= 1;
+		gameManagerScript.stateGrid[x,y] -= 1;
+	}
+>>>>>>> Stashed changes
 }

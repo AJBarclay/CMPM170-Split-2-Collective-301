@@ -1261,6 +1261,7 @@ MonoBehaviour:
   mouseSensitivity: 2
   upLimit: -50
   downLimit: 50
+  streamLine: {fileID: 4430948553395269630, guid: 720d1b8da99c20c46a8e86abd9c82fef, type: 3}
 --- !u!1 &7017960707744260945
 GameObject:
   m_ObjectHideFlags: 0

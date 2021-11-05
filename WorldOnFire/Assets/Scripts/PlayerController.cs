@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity = 2f;
     public float upLimit = -50;
     public float downLimit = 50;
+	public LineRenderer streamLine;
+	public float rangeStretch = 5.0f;
+	public float rangeDelta = 0.0f;
+	public float range = 10.0f;
     
   
     void Awake()
@@ -31,7 +35,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
 
+=======
+		Debug.Log(rangeDelta);
+        if (gameObject.GetComponent<Animator>().GetBool("isWalking"))
+        {
+            AudioManager.Instance.Play(0);
+        } else if (gameObject.GetComponent<Animator>().GetBool("isWalking") == false)
+        {
+            AudioManager.Instance.Stop(0);
+        }
+>>>>>>> Stashed changes
         if(Input.GetKey(KeyCode.LeftShift))
         {
             speed = 10;
@@ -40,6 +55,56 @@ public class PlayerController : MonoBehaviour
         {
             speed = 6;
         }
+<<<<<<< Updated upstream
+=======
+		streamLine.enabled = false;
+        if (Input.GetMouseButton(1))
+        {
+            transform.GetChild(2).GetComponent<Camera>().fieldOfView = 40;
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 rayOrigin = transform.GetChild(2).GetComponent<Camera>().ViewportToWorldPoint (new Vector3(0.5f, 0.5f, 0.0f));
+                RaycastHit hit;
+                if (Physics.Raycast(rayOrigin, transform.GetChild(2).GetComponent<Camera>().transform.forward, out hit, rangeDelta + range))
+                {
+					if (rangeDelta < rangeStretch) {rangeDelta += Time.deltaTime;}
+					if (rangeDelta > rangeStretch) {rangeDelta = rangeStretch;}
+					
+					Vector3[] positions = new Vector3 [2] {transform.position, hit.point};
+					streamLine.SetPositions(positions);
+					streamLine.enabled = true;
+                    if (hit.collider.gameObject.CompareTag("Fire"))
+                    {
+                        FireSpreading hitFireScript = hit.collider.gameObject.GetComponent<FireSpreading>();
+						hitFireScript.Extinguish();
+                    }
+					if (hit.collider.gameObject.CompareTag("House"))
+					{
+						houseCatchingFire hitHouseScript = hit.collider.gameObject.GetComponent<houseCatchingFire>();
+						hitHouseScript.houseExtinguish();
+					}
+                    
+                }
+				else
+				{
+					if (rangeDelta > 0 ) {rangeDelta -= Time.deltaTime;}
+					if (rangeDelta < 0) {rangeDelta = 0;}
+					streamLine.enabled = false;
+				}
+            }
+			else
+			{
+				if (rangeDelta > 0 ) {rangeDelta -= Time.deltaTime;}
+				if (rangeDelta < 0) {rangeDelta = 0;}
+			}
+        }
+        else
+        {
+			if (rangeDelta > 0) {rangeDelta -= Time.deltaTime;}
+			if (rangeDelta < 0) {rangeDelta = 0;}
+            transform.GetChild(2).GetComponent<Camera>().fieldOfView = 60;
+        }
+>>>>>>> Stashed changes
 
         if (gameObject.GetComponent<CharacterController>().velocity.magnitude > 0 && gameObject.GetComponent<CharacterController>().velocity.magnitude < 7)
         {
