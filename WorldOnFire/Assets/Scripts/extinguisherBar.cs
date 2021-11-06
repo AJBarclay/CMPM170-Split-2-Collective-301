@@ -5,42 +5,7 @@ using UnityEngine.UI;
 
 public class extinguisherBar : MonoBehaviour
 {
-    private Image barImage;
-    Fuel fuel;
-    private playerNearRefill Instance;
-    GameObject[] players;
-    private void Awake()
-    {
-        barImage = transform.Find("fuelBar").GetComponent<Image>();
-        fuel = new Fuel();
-        barImage.fillAmount = 0;
-        players = GameObject.FindGameObjectsWithTag("Refill");
-
-    }
-    private void Update()
-    {
-
-
-        checkingRefills(players);
-        //Debug.Log(playerIsNearRefill.playerIsNear);
-        
-        
-        
-        
-    }
-
-    private void checkingRefills(GameObject[] cols)
-    {
-        foreach (GameObject station in cols)
-        {
-            playerNearRefill checker = station.GetComponent<playerNearRefill>();
-            if (checker.playerIsNear)
-            {
-                fuel.Update();
-                barImage.fillAmount = fuel.GetFuelNormalized();
-            }
-        }
-    }
+ 
 }
 
 public class Fuel
