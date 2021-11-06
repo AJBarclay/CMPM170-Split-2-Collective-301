@@ -1,14 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
 
     [SerializeField] private bool isPaused;
+
+    public Slider sfxSlider;
+    public Slider bgmSlider;
+    public AudioMixerGroup sfxGroup;
+    public AudioMixerGroup bgmGroup;
     private void Update()
     {
+        
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             isPaused = !isPaused;
@@ -50,6 +58,12 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Quit");
         Application.Quit();
+    }
+
+    public void ChangeVolume()
+    {
+        sfxGroup.audioMixer.SetFloat("VolumeSFX", sfxSlider.value);
+        bgmGroup.audioMixer.SetFloat("VolumeBGM", bgmSlider.value);
     }
 }
 
