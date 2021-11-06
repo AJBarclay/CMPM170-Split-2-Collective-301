@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -621,13 +621,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 636042420}
   m_HandleRect: {fileID: 1170281137}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -50
+  m_MaxValue: 50
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: -0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 625493809}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: ChangeVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &352813397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,6 +1151,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1658756070}
   isPaused: 0
+  sfxSlider: {fileID: 1922344229}
+  bgmSlider: {fileID: 344907809}
+  sfxGroup: {fileID: 3705718340028220153, guid: e38777b0126c34b3b8d5bb070692d5c5, type: 2}
+  bgmGroup: {fileID: 2431329185962671985, guid: e38777b0126c34b3b8d5bb070692d5c5, type: 2}
 --- !u!4 &625493810
 Transform:
   m_ObjectHideFlags: 0
@@ -1774,7 +1790,7 @@ AudioSource:
   m_GameObject: {fileID: 1241772769}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2431329185962671985, guid: e38777b0126c34b3b8d5bb070692d5c5, type: 2}
   m_audioClip: {fileID: 8300000, guid: d1c862b68502ba14c9142b661ad00184, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1894,6 +1910,7 @@ MonoBehaviour:
     pitch: 1
     playOnAwake: 0
     loop: 1
+    mixerOutput: {fileID: 3705718340028220153, guid: e38777b0126c34b3b8d5bb070692d5c5, type: 2}
     audioSource: {fileID: 0}
   - name: Fire
     audioClip: {fileID: 8300000, guid: 254b0d076d470ff4eb957b2c42a65be9, type: 3}
@@ -1901,6 +1918,7 @@ MonoBehaviour:
     pitch: 1
     playOnAwake: 0
     loop: 1
+    mixerOutput: {fileID: 3705718340028220153, guid: e38777b0126c34b3b8d5bb070692d5c5, type: 2}
     audioSource: {fileID: 0}
 --- !u!1 &1400773577
 GameObject:
@@ -2899,13 +2917,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1134365909}
   m_HandleRect: {fileID: 253061358}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -50
+  m_MaxValue: 50
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 625493809}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: ChangeVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1990782762
 GameObject:
   m_ObjectHideFlags: 0

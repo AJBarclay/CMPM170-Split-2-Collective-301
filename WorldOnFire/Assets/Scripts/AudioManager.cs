@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
 
         public bool playOnAwake = false;
         public bool loop;
+        public AudioMixerGroup mixerOutput;
         
         [HideInInspector]
         public AudioSource audioSource;
@@ -45,6 +46,7 @@ public class AudioManager : MonoBehaviour
             s.audioSource.volume = s.volume;
             s.audioSource.playOnAwake = s.playOnAwake;
             s.audioSource.pitch = s.pitch;
+            s.audioSource.outputAudioMixerGroup = s.mixerOutput;
             s.audioSource.loop = s.loop;
 
         }
