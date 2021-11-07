@@ -11,8 +11,6 @@ public class extinguisherBar : MonoBehaviour
 public class Fuel
 {
     public const int FUEL_MAX = 1;
-    private float fuelAmount;
-    private float losingAmount;
     public float fuelRegentAmount;
     private Image barImage;
 
@@ -21,7 +19,6 @@ public class Fuel
         barImage = GameObject.Find("fuelBar").GetComponent<Image>();
         //fuelAmount = barImage.fillAmount;
         barImage.fillAmount = 1f;
-        losingAmount = 100;
         fuelRegentAmount = 0.5f;
     }
 

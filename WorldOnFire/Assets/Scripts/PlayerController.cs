@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButton(0) && barImage.fillAmount > 0)
             {
                 Debug.Log("bar is filled: " + barImage.fillAmount);
-                fuel.usingFuel(0.5f);
+                fuel.usingFuel(0.2f);
                 Vector3 rayOrigin = transform.GetChild(2).GetComponent<Camera>().ViewportToWorldPoint (new Vector3(0.5f, 0.5f, 0.0f));
                 RaycastHit hit;
                 if (Physics.Raycast(rayOrigin, transform.GetChild(2).GetComponent<Camera>().transform.forward, out hit, rangeDelta + range))
