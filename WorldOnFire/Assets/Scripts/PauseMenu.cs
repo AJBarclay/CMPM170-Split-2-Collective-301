@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -64,6 +65,11 @@ public class PauseMenu : MonoBehaviour
     {
         sfxGroup.audioMixer.SetFloat("VolumeSFX", sfxSlider.value);
         bgmGroup.audioMixer.SetFloat("VolumeBGM", bgmSlider.value);
+    }
+
+    public void ReturnMain ()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
     }
 }
 

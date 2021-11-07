@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using TMPro.EditorUtilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -325,6 +326,11 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Quit");
         Application.Quit();
+    }
+
+    public void ReturnMain ()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
     }
 }
 
