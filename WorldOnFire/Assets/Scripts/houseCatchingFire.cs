@@ -50,12 +50,13 @@ public class houseCatchingFire : MonoBehaviour
 			}
 
         }
-        if(other.gameObject.name == "Extinguisher")
+        if(other.gameObject.name == "Extinguisher" && houseIsOnFire == true)
         {
-            houseIsOnFire = false;
+            
             GameManager.Instance.score += 10;
             StopCoroutine(houseBurningDown());
-        }
+			houseIsOnFire = false;
+		}
     }
 
     IEnumerator houseBurningDown()
