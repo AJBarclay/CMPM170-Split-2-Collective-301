@@ -706,7 +706,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ADD GAME INSTRUCTIONS HERE
+  m_text: "HOLD SHIFT TO SPRINT\nRIGHT CLICK TO ZOOM \nLEFT CLICK TO FIRE YOUR EXTINGUISHER\nPRESS
+    R AT REFUEL STATIONS TO RECHARGE\nPUT OUT THE FIRES BEFORE THEY REACH THE REFUEL
+    STATION"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -733,8 +735,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
