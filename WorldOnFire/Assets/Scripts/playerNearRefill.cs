@@ -11,9 +11,7 @@ public class playerNearRefill : MonoBehaviour
     Fuel fuel;
     private void Awake()
     {
-        barImage = GameObject.Find("fuelBar").GetComponent<Image>();
         fuel = new Fuel();
-        barImage.fillAmount = 0;
 
     }
     private void Update()
@@ -23,7 +21,6 @@ public class playerNearRefill : MonoBehaviour
         if (playerIsNear && Input.GetKey(KeyCode.R))
         {
             fuel.Update();
-            barImage.fillAmount = fuel.GetFuelNormalized();
         }
         //Debug.Log(playerIsNearRefill.playerIsNear);
 

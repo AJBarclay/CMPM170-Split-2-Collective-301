@@ -10,32 +10,42 @@ public class extinguisherBar : MonoBehaviour
 
 public class Fuel
 {
-    public const int FUEL_MAX = 100;
+    public const int FUEL_MAX = 1;
     private float fuelAmount;
+    private float losingAmount;
     public float fuelRegentAmount;
+    private Image barImage;
 
     public Fuel()
     {
-        fuelAmount = 0;
-        fuelRegentAmount = 30f;
+        barImage = GameObject.Find("fuelBar").GetComponent<Image>();
+        //fuelAmount = barImage.fillAmount;
+        barImage.fillAmount = 1f;
+        losingAmount = 100;
+        fuelRegentAmount = 0.5f;
     }
 
     public void Update()
     {
-        fuelAmount += fuelRegentAmount * Time.deltaTime;
+        if (barImage.fillAmount <= 1)
+        {
+            barImage.fillAmount += fuelRegentAmount * Time.deltaTime;
+        }
     }
+
 
     public void usingFuel(float amount)
     {
-        if(fuelAmount >= amount)
+        if(barImage.fillAmount > 0)
         {
-            fuelAmount -= amount * Time.deltaTime;
+            barImage.fillAmount -= amount * Time.deltaTime;
         }
     }
 
     public float GetFuelNormalized()
     {
-        return fuelAmount / FUEL_MAX;
+        return barImage.fillAmount / FUEL_MAX;
     }
+
 }
  

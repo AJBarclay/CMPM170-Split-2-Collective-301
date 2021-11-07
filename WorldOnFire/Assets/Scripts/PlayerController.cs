@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,12 +20,17 @@ public class PlayerController : MonoBehaviour
 	public float rangeStretch = 5.0f;
 	public float rangeDelta = 0.0f;
 	public float range = 10.0f;
-    
-  
+
+    // extinguisher fuel
+    private Image barImage;
+    Fuel fuel;
+
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        barImage = GameObject.Find("fuelBar").GetComponent<Image>();
+        fuel = new Fuel();
     }
 
     void Start()
@@ -35,7 +41,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		Debug.Log(rangeDelta);
+		//Debug.Log(rangeDelta);
         if (gameObject.GetComponent<Animator>().GetBool("isWalking"))
         {
             AudioManager.Instance.Play(0);
@@ -55,8 +61,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(1))
         {
             transform.GetChild(2).GetComponent<Camera>().fieldOfView = 40;
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0) && barImage.fillAmount > 0)
             {
+                Debug.Log("bar is filled: " + barImage.fillAmount);
+                fuel.usingFuel(0.5f);
                 Vector3 rayOrigin = transform.GetChild(2).GetComponent<Camera>().ViewportToWorldPoint (new Vector3(0.5f, 0.5f, 0.0f));
                 RaycastHit hit;
                 if (Physics.Raycast(rayOrigin, transform.GetChild(2).GetComponent<Camera>().transform.forward, out hit, rangeDelta + range))
