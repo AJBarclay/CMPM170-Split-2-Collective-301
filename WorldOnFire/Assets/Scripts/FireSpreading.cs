@@ -23,7 +23,7 @@ public class FireSpreading : MonoBehaviour
 		//fire = gameObject;
 		//gameManagerScript = GameManager.GetComponent<GameManager>();
 		gameManagerScript = GameManager.Instance;
-        
+        timer = Random.Range(5.0f,10.0f);
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class FireSpreading : MonoBehaviour
 			gameManagerScript.stateGrid[x,y] += 1;
 			if (state > 4) { state = 4;}
 			if(gameManagerScript.stateGrid[x,y] > 4) { gameManagerScript.stateGrid[x,y] = 4;}
-			timer = 5.0f;
+			timer = Random.Range(2.5f,10.0f);
 		}
 		gameManagerScript.stateGrid[x,y] = state;
 		switch(state)
